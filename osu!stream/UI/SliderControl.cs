@@ -1,11 +1,11 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
+using System;
 
 namespace osum.UI
 {

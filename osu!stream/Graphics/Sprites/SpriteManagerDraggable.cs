@@ -1,4 +1,3 @@
-using System;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes;
@@ -6,6 +5,7 @@ using osum.GameModes.SongSelect;
 using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
+using System;
 
 namespace osum.Graphics.Sprites
 {

@@ -1,7 +1,7 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
+using System;
 
 namespace osum.Graphics.Sprites
 {

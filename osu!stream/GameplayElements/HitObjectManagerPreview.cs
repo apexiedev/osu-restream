@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using osum.GameModes.Play;
+﻿using osum.GameModes.Play;
 using osum.GameplayElements.Beatmaps;
 using osum.GameplayElements.HitObjects;
+using System;
+using System.Collections.Generic;
 
 namespace osum.GameplayElements
 {
@@ -31,11 +31,11 @@ namespace osum.GameplayElements
 
             if (lastObjectTime > 0)
                 foreach (List<HitObject> objects in StreamHitObjects)
-                foreach (HitObject h in objects.FindAll(h => h.StartTime > lastObjectTime))
-                {
-                    h.Sprites.ForEach(s => s.Bypass = true);
-                    objects.Remove(h);
-                }
+                    foreach (HitObject h in objects.FindAll(h => h.StartTime > lastObjectTime))
+                    {
+                        h.Sprites.ForEach(s => s.Bypass = true);
+                        objects.Remove(h);
+                    }
 
             base.PostProcessing();
         }

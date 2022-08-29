@@ -1,5 +1,5 @@
-using System;
 using osum.Support;
+using System;
 
 namespace osum.Audio
 {

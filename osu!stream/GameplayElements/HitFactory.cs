@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using OpenTK;
+﻿using OpenTK;
 using osum.GameplayElements.Beatmaps;
 using osum.GameplayElements.HitObjects;
 using osum.GameplayElements.HitObjects.Osu;
+using System.Collections.Generic;
 
 namespace osum.GameplayElements
 {

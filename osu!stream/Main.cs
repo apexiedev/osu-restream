@@ -65,11 +65,11 @@ namespace osum
                     (Director.CurrentMode as Player)?.Pause();
                     break;
                 case OsuMode.Play:
-                {
-                    if (!(bool)(Director.CurrentMode as Player)?.menu.Failed)
-                        (Director.CurrentMode as Player).menu.MenuDisplayed = false;
-                    break;
-                }
+                    {
+                        if (!(bool)(Director.CurrentMode as Player)?.menu.Failed)
+                            (Director.CurrentMode as Player).menu.MenuDisplayed = false;
+                        break;
+                    }
                 case OsuMode.MainMenu:
                     this.FinishAffinity();
                     break;
@@ -105,12 +105,12 @@ namespace osum
                 case OsuMode.Play:
                     break;
                 default:
-                {
-                    this.pausedFromSuspend = true;
-                    AudioEngine.Music.Pause();
+                    {
+                        this.pausedFromSuspend = true;
+                        AudioEngine.Music.Pause();
 
-                    break;
-                }
+                        break;
+                    }
             }
 
             TextureManager.DisposeAll();

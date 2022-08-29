@@ -1,5 +1,4 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.Graphics;
@@ -9,6 +8,7 @@ using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
 using osum.Localisation;
+using System;
 
 namespace osum.GameModes.Play.Components
 {

@@ -2,10 +2,10 @@
 //  Author: Dean Herbert <pe@ppy.sh>
 //  Copyright (c) 2010 2010 Dean Herbert
 
+using osum.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using osum.Helpers;
 
 namespace osum.GameplayElements.Beatmaps
 {

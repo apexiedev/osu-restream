@@ -2,9 +2,9 @@
 //  Author: Dean Herbert <pe@ppy.sh>
 //  Copyright (c) 2010 2010 Dean Herbert
 
-using System.Collections.Generic;
 using OpenTK;
 using osum.GameplayElements.Beatmaps;
+using System.Collections.Generic;
 
 namespace osum.GameplayElements.HitObjects.Osu
 {

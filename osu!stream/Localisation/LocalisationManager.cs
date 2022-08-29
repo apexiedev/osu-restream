@@ -1,8 +1,8 @@
-﻿using System;
+﻿using osum.AssetManager;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using osum.AssetManager;
 
 namespace osum.Localisation
 {

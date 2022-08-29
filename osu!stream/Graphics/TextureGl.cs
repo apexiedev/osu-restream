@@ -8,26 +8,13 @@ using OpenGLES;
 
 using TextureTarget = OpenTK.Graphics.ES11.All;
 using TextureParameterName = OpenTK.Graphics.ES11.All;
-using EnableCap = OpenTK.Graphics.ES11.All;
-using BlendingFactorSrc = OpenTK.Graphics.ES11.All;
-using BlendingFactorDest = OpenTK.Graphics.ES11.All;
-using PixelStoreParameter = OpenTK.Graphics.ES11.All;
 using VertexPointerType = OpenTK.Graphics.ES11.All;
-using ColorPointerType = OpenTK.Graphics.ES11.All;
-using ClearBufferMask = OpenTK.Graphics.ES11.All;
 using TexCoordPointerType = OpenTK.Graphics.ES11.All;
 using BeginMode = OpenTK.Graphics.ES11.All;
-using MatrixMode = OpenTK.Graphics.ES11.All;
 using PixelInternalFormat = OpenTK.Graphics.ES11.All;
 using PixelFormat = OpenTK.Graphics.ES11.All;
 using PixelType = OpenTK.Graphics.ES11.All;
-using ShaderType = OpenTK.Graphics.ES11.All;
-using VertexAttribPointerType = OpenTK.Graphics.ES11.All;
-using ProgramParameter = OpenTK.Graphics.ES11.All;
-using ShaderParameter = OpenTK.Graphics.ES11.All;
 using ErrorCode = OpenTK.Graphics.ES11.All;
-using TextureEnvParameter = OpenTK.Graphics.ES11.All;
-using TextureEnvTarget = OpenTK.Graphics.ES11.All;
 #else
 using OpenTK.Graphics.OpenGL;
 #endif
@@ -317,14 +304,14 @@ namespace osum.Graphics
             float bottom = drawRect.Bottom / potHeight;
 
 
-/*#if ANDROID
-            if (rotation == 0 && SUPPORTS_DRAWTEXTURE_EXT)
-            {
-                Bind();
-                GL.Oes.DrawTex(left, top, 0, (right - left) * scaleVector.X, (bottom - top) * scaleVector.Y);
-                return;
-            }
-#endif*/
+            /*#if ANDROID
+                        if (rotation == 0 && SUPPORTS_DRAWTEXTURE_EXT)
+                        {
+                            Bind();
+                            GL.Oes.DrawTex(left, top, 0, (right - left) * scaleVector.X, (bottom - top) * scaleVector.Y);
+                            return;
+                        }
+            #endif*/
 
 #if NO_PIN_SUPPORT
                 float* coordinates = (float*)handle_coordinates_pointer;

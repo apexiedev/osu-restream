@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes.MainMenu;
 using osum.GameModes.Play;
@@ -12,6 +10,8 @@ using osum.Helpers;
 using osum.Libraries.NetLib;
 using osum.Localisation;
 using osum.Support;
+using System;
+using System.IO;
 
 namespace osum.GameModes
 {

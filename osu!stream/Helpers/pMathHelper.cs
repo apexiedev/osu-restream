@@ -1,7 +1,7 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using OpenTK;
 
 namespace osum.Helpers
 {
@@ -55,8 +55,8 @@ namespace osum.Helpers
                     working.Add(v);
 
                 for (int level = 0; level < count; level++)
-                for (int j = 0; j < count - level - 1; j++)
-                    working[j] = Vector2.Lerp(working[j], working[j + 1], t);
+                    for (int j = 0; j < count - level - 1; j++)
+                        working[j] = Vector2.Lerp(working[j], working[j + 1], t);
 
                 return working[0];
             }

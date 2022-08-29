@@ -19,28 +19,7 @@ using ObjCRuntime;
 using OpenGLES;
 #endif
 
-using TextureTarget = OpenTK.Graphics.ES11.All;
-using TextureParameterName = OpenTK.Graphics.ES11.All;
-using EnableCap = OpenTK.Graphics.ES11.All;
-using BlendingFactorSrc = OpenTK.Graphics.ES11.All;
-using BlendingFactorDest = OpenTK.Graphics.ES11.All;
-using PixelStoreParameter = OpenTK.Graphics.ES11.All;
-using VertexPointerType = OpenTK.Graphics.ES11.All;
-using ColorPointerType = OpenTK.Graphics.ES11.All;
-using ClearBufferMask = OpenTK.Graphics.ES11.All;
-using TexCoordPointerType = OpenTK.Graphics.ES11.All;
-using BeginMode = OpenTK.Graphics.ES11.All;
 using MatrixMode = OpenTK.Graphics.ES11.All;
-using PixelInternalFormat = OpenTK.Graphics.ES11.All;
-using PixelFormat = OpenTK.Graphics.ES11.All;
-using PixelType = OpenTK.Graphics.ES11.All;
-using ShaderType = OpenTK.Graphics.ES11.All;
-using VertexAttribPointerType = OpenTK.Graphics.ES11.All;
-using ProgramParameter = OpenTK.Graphics.ES11.All;
-using ShaderParameter = OpenTK.Graphics.ES11.All;
-using ErrorCode = OpenTK.Graphics.ES11.All;
-using TextureEnvParameter = OpenTK.Graphics.ES11.All;
-using TextureEnvTarget = OpenTK.Graphics.ES11.All;
 #else
 using OpenTK.Graphics.OpenGL;
 
@@ -223,13 +202,15 @@ namespace osum.GameplayElements.HitObjects.Osu
         {
             spriteFollowCircle =
                 new pSprite(TextureManager.Load(OsuTexture.sliderfollowcircle), FieldTypes.GamefieldSprites,
-                    OriginTypes.Centre, ClockTypes.Audio, Position, 0.98f, false, Color.White) { ExactCoordinates = false };
+                    OriginTypes.Centre, ClockTypes.Audio, Position, 0.98f, false, Color.White)
+                { ExactCoordinates = false };
 
             pTexture[] sliderballtextures = TextureManager.LoadAnimation(OsuTexture.sliderb_0, 10);
 
             spriteFollowBall =
                 new pAnimation(sliderballtextures, FieldTypes.GamefieldSprites, OriginTypes.Centre,
-                    ClockTypes.Audio, Position, SpriteManager.drawOrderFwdPrio(EndTime), false, Color.White) { ExactCoordinates = false };
+                    ClockTypes.Audio, Position, SpriteManager.drawOrderFwdPrio(EndTime), false, Color.White)
+                { ExactCoordinates = false };
             spriteFollowBall.FramesPerSecond = Velocity / 6;
 
             Transformation fadeInBall = new TransformationF(TransformationType.Fade, 0, 1,
@@ -241,6 +222,13 @@ namespace osum.GameplayElements.HitObjects.Osu
             Transformation fadeInTail = new TransformationF(TransformationType.Fade, 0, 1,
                 snakingBegin - DifficultyManager.FadeInReboundArrow,
                 snakingBegin);
+
+            if (GameBase.Config.GetValue(@"HiddenMod", false))
+            {
+                fadeInHead = new TransformationF(TransformationType.Fade, 0, 1,
+                StartTime - DifficultyManager.PreEmpt, StartTime - DifficultyManager.PreEmpt + DifficultyManager.FadeIn);
+                fadeOut = new TransformationF(TransformationType.Fade, 1, 0, StartTime, EndTime + DifficultyManager.FadeOut / 2);
+            }
 
             spriteSliderBody = new pSprite(null, FieldTypes.NativeScaled, OriginTypes.TopLeft,
                 ClockTypes.Audio, Vector2.Zero, GameBase.IsSlowDevice ? 0.01f : SpriteManager.drawOrderBwd(EndTime + 14),
@@ -256,7 +244,8 @@ namespace osum.GameplayElements.HitObjects.Osu
 
             spriteFollowBallOverlay =
                 new pSprite(TextureManager.Load(OsuTexture.sliderballoverlay), FieldTypes.GamefieldSprites,
-                    OriginTypes.TopCentre, ClockTypes.Audio, Position + new Vector2(0, -DifficultyManager.HitObjectRadiusGamefield * 59 / 64), 0.99f, false, Color.White) { ExactCoordinates = false };
+                    OriginTypes.TopCentre, ClockTypes.Audio, Position + new Vector2(0, -DifficultyManager.HitObjectRadiusGamefield * 59 / 64), 0.99f, false, Color.White)
+                { ExactCoordinates = false };
 
             spriteFollowBallOverlay.Transform(fadeInBall);
             spriteFollowBallOverlay.Transform(fadeOutInstant);

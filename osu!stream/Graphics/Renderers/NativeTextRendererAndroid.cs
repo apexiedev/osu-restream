@@ -1,9 +1,9 @@
-﻿using System;
-using Android.Graphics;
+﻿using Android.Graphics;
 using Android.Text;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.AssetManager;
+using System;
 
 namespace osum.Graphics.Renderers
 {
@@ -103,13 +103,13 @@ namespace osum.Graphics.Renderers
             switch (oldAlignment)
             {
                 case TextAlignment.Centre:
-                {
-                    return Layout.Alignment.AlignCenter;
-                }
+                    {
+                        return Layout.Alignment.AlignCenter;
+                    }
                 case TextAlignment.Left:
-                {
-                    return Layout.Alignment.AlignNormal;
-                }
+                    {
+                        return Layout.Alignment.AlignNormal;
+                    }
                 default: return Layout.Alignment.AlignNormal;
             }
         }

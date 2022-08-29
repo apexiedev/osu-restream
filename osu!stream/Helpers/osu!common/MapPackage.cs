@@ -249,11 +249,12 @@ namespace osum.Helpers
 #if DIST
                 string seed = (char)0x08 + fMetadata[MapMetaType.Title] + "4390gn8931i" + fMetadata[MapMetaType.Artist];
 
-                if (fFilename.EndsWith(".osz2")) {
-                    if (!fMetadata.ContainsKey (MapMetaType.Creator) || !fMetadata.ContainsKey (MapMetaType.BeatmapSetID))
+                if (fFilename.EndsWith(".osz2"))
+                {
+                    if (!fMetadata.ContainsKey(MapMetaType.Creator) || !fMetadata.ContainsKey(MapMetaType.BeatmapSetID))
                         return;
 
-                    seed = fMetadata [MapMetaType.Creator] + "yhxyfjo5" + fMetadata [MapMetaType.BeatmapSetID];
+                    seed = fMetadata[MapMetaType.Creator] + "yhxyfjo5" + fMetadata[MapMetaType.BeatmapSetID];
                 }
 #else
                 string seed;
@@ -700,7 +701,7 @@ namespace osum.Helpers
             if (!fMapIDsFiles.ContainsKey(map))
                 throw new Exception("Map does not exist in this mappackage");
 #if !DEBUG
-            if (fMapIDsFiles.ContainsValue(id) && id != -1 && GetIDByMap(map)!=id)
+            if (fMapIDsFiles.ContainsValue(id) && id != -1 && GetIDByMap(map) != id)
                 throw new Exception("An other map already has this ID set");
 #endif
 

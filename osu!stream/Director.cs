@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using osum.Audio;
 using osum.GameModes;
 using osum.GameModes.MainMenu;
@@ -12,6 +10,8 @@ using osum.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Support;
+using System;
+using System.Collections.Generic;
 
 namespace osum
 {
@@ -228,6 +228,9 @@ namespace osum
                     break;
                 case OsuMode.Empty:
                     mode = new Empty();
+                    break;
+                case OsuMode.Mods:
+                    mode = new Mods();
                     break;
 #if MONO
                 case OsuMode.PositioningTest:

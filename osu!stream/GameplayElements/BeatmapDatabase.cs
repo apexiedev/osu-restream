@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using osum.GameModes.SongSelect;
+﻿using osum.GameModes.SongSelect;
 using osum.GameplayElements.Beatmaps;
 using osum.GameplayElements.Scoring;
 using osum.Helpers;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 #if iOS
 using osum.Support.iPhone;

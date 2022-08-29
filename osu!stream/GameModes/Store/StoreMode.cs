@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.GameModes.MainMenu;
@@ -12,6 +9,9 @@ using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Libraries.NetLib;
 using osum.Localisation;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace osum.GameModes.Store
 {

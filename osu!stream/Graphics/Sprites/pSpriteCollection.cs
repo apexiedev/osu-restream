@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using OpenTK;
+﻿using OpenTK;
+using System.Collections.Generic;
 
 namespace osum.Graphics.Sprites
 {

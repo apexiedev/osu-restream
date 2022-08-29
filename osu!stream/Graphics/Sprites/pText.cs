@@ -1,8 +1,8 @@
-using System;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Graphics.Renderers;
 using osum.Helpers;
+using System;
 
 namespace osum.Graphics.Sprites
 {

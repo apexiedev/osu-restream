@@ -2,10 +2,6 @@
 //  Author: Dean Herbert <pe@ppy.sh>
 //  Copyright (c) 2010 2010 Dean Herbert
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
@@ -22,6 +18,10 @@ using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
 using osum.Support;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 
 //using osu.Graphics.Renderers;
 
@@ -367,7 +367,9 @@ namespace osum.GameModes.Play
             }
 
             if (GameBase.Instance != null && AudioEngine.Music != null)
+            {
                 AudioEngine.Music.Play();
+            }
 
             if (menuPauseButton != null) menuPauseButton.HandleInput = true;
         }

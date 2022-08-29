@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using osum.GameplayElements.Beatmaps;
+﻿using osum.GameplayElements.Beatmaps;
 using osum.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace osum.Audio
 {

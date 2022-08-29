@@ -1,5 +1,4 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.GameModes.Play;
@@ -11,6 +10,7 @@ using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
 using osum.Support;
+using System;
 
 namespace osum.GameModes.Options
 {
@@ -19,7 +19,8 @@ namespace osum.GameModes.Options
         private readonly string[] creditsRoll =
         {
             "OsuTexture.menu_logo",
-            "Created by Dean \"peppy\" Herbert",
+            "Modification created by ItzLightyHD",
+            "Original game created by Dean \"peppy\" Herbert",
             "*Graphics",
             "Koko Ban - Concept artwork, Interface mockups, colours!",
             "LuigiHann - Gameplay element contributions, rank letters",

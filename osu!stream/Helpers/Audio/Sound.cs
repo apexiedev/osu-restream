@@ -32,7 +32,7 @@ namespace osum.Helpers.Audio
             reader = SoundReader.Create(filename);
         }
 
-        #region --- Public Members ---
+    #region --- Public Members ---
 
         public SoundData ReadSamples(int count)
         {
@@ -52,9 +52,9 @@ namespace osum.Helpers.Audio
             if (buffer == 0) throw new ArgumentOutOfRangeException("buffer", "May not be zero.");
         }
 
-        #endregion
+    #endregion
 
-        #region --- IDisposable Members ---
+    #region --- IDisposable Members ---
 
         /// <summary>Disposes of the sound buffer.</summary>
         public void Dispose()
@@ -78,7 +78,7 @@ namespace osum.Helpers.Audio
             this.Dispose(false);
         }
 
-        #endregion
+    #endregion
     }
 #endif
 }

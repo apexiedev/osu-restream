@@ -1,6 +1,6 @@
-﻿using System;
+﻿using OpenTK.Graphics;
+using System;
 using System.Drawing;
-using OpenTK.Graphics;
 
 namespace osum.Helpers
 {

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using osum.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
-using osum.Helpers;
 
 namespace osu_common.Libraries.Osz2
 {
@@ -26,7 +25,7 @@ namespace osu_common.Libraries.Osz2
         }
 
         // returns null if already openened or writelocked
-        public static MapPackage TryOpen (string path, bool createIfNotFound, bool metadataOnly)
+        public static MapPackage TryOpen(string path, bool createIfNotFound, bool metadataOnly)
         {
             lock (locker)
             {
@@ -37,7 +36,7 @@ namespace osu_common.Libraries.Osz2
                 {
                     try
                     {
-                        package = new MapPackage(absolute,null, createIfNotFound, metadataOnly);
+                        package = new MapPackage(absolute, null, createIfNotFound, metadataOnly);
                     }
 #if DEBUG
                     catch (ExecutionEngineException)
@@ -70,7 +69,7 @@ namespace osu_common.Libraries.Osz2
             }
         }
 
-        public static void CloseMapPackage (MapPackage package)
+        public static void CloseMapPackage(MapPackage package)
         {
             lock (locker)
             {

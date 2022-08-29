@@ -1,8 +1,8 @@
 #region Using Statements
 
-using System;
 using OpenTK;
 using osum.Helpers;
+using System;
 using Color = OpenTK.Graphics.Color4;
 
 #endregion

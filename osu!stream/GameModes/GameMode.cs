@@ -1,6 +1,6 @@
-﻿using System;
-using osum.Graphics.Sprites;
+﻿using osum.Graphics.Sprites;
 using osum.Support;
+using System;
 
 namespace osum.GameModes
 {
@@ -18,7 +18,8 @@ namespace osum.GameModes
         PositioningTest,
         Empty,
         VideoPreview,
-        PlayTest
+        PlayTest,
+        Mods
     }
 
     /// <summary>

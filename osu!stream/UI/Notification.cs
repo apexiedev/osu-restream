@@ -68,108 +68,108 @@ namespace osum.UI
             switch (style)
             {
                 case NotificationStyle.Okay:
-                {
-                    pDrawable additiveButton = null;
-
-                    okayButton = new pSprite(TextureManager.Load(OsuTexture.notification_button_ok), new Vector2(0, button_height))
                     {
-                        Field = FieldTypes.StandardSnapCentre,
-                        Origin = OriginTypes.Centre,
-                        Clocking = ClockTypes.Game,
-                        DimImmune = true,
-                        DrawDepth = 0.99f,
-                        HandleClickOnUp = true
-                    };
-                    okayButton.OnHover += delegate { additiveButton = okayButton.AdditiveFlash(10000, 0.4f); };
+                        pDrawable additiveButton = null;
 
-                    okayButton.OnHoverLost += delegate
-                    {
-                        additiveButton?.FadeOut(100);
-                    };
+                        okayButton = new pSprite(TextureManager.Load(OsuTexture.notification_button_ok), new Vector2(0, button_height))
+                        {
+                            Field = FieldTypes.StandardSnapCentre,
+                            Origin = OriginTypes.Centre,
+                            Clocking = ClockTypes.Game,
+                            DimImmune = true,
+                            DrawDepth = 0.99f,
+                            HandleClickOnUp = true
+                        };
+                        okayButton.OnHover += delegate { additiveButton = okayButton.AdditiveFlash(10000, 0.4f); };
 
-                    okayButton.OnClick += delegate { dismiss(true); };
+                        okayButton.OnHoverLost += delegate
+                        {
+                            additiveButton?.FadeOut(100);
+                        };
 
-                    Add(okayButton);
+                        okayButton.OnClick += delegate { dismiss(true); };
 
-                    pText okayText = new pText(LocalisationManager.GetString(OsuString.Okay), 24, new Vector2(0, button_height), Vector2.Zero, 1, true, Color4.White, true)
-                    {
-                        Field = FieldTypes.StandardSnapCentre,
-                        Origin = OriginTypes.Centre,
-                        Clocking = ClockTypes.Game,
-                        DimImmune = true
-                    };
+                        Add(okayButton);
 
-                    Add(okayText);
-                }
+                        pText okayText = new pText(LocalisationManager.GetString(OsuString.Okay), 24, new Vector2(0, button_height), Vector2.Zero, 1, true, Color4.White, true)
+                        {
+                            Field = FieldTypes.StandardSnapCentre,
+                            Origin = OriginTypes.Centre,
+                            Clocking = ClockTypes.Game,
+                            DimImmune = true
+                        };
+
+                        Add(okayText);
+                    }
                     break;
                 case NotificationStyle.YesNo:
-                {
-                    pDrawable additiveButton = null;
-
-                    okayButton = new pSprite(TextureManager.Load(OsuTexture.notification_button_yes), new Vector2(-140, button_height))
                     {
-                        Field = FieldTypes.StandardSnapCentre,
-                        Origin = OriginTypes.Centre,
-                        Clocking = ClockTypes.Game,
-                        DimImmune = true,
-                        DrawDepth = 0.99f,
-                        HandleClickOnUp = true
-                    };
+                        pDrawable additiveButton = null;
 
-                    okayButton.OnHover += delegate { additiveButton = okayButton.AdditiveFlash(10000, 0.4f); };
+                        okayButton = new pSprite(TextureManager.Load(OsuTexture.notification_button_yes), new Vector2(-140, button_height))
+                        {
+                            Field = FieldTypes.StandardSnapCentre,
+                            Origin = OriginTypes.Centre,
+                            Clocking = ClockTypes.Game,
+                            DimImmune = true,
+                            DrawDepth = 0.99f,
+                            HandleClickOnUp = true
+                        };
 
-                    okayButton.OnHoverLost += delegate
+                        okayButton.OnHover += delegate { additiveButton = okayButton.AdditiveFlash(10000, 0.4f); };
+
+                        okayButton.OnHoverLost += delegate
+                        {
+                            additiveButton?.FadeOut(100);
+                        };
+
+                        okayButton.OnClick += delegate { dismiss(true); };
+
+                        Add(okayButton);
+
+                        pText okayText = new pText(LocalisationManager.GetString(OsuString.Yes), 24, new Vector2(-140, button_height), Vector2.Zero, 1, true, Color4.White, true)
+                        {
+                            Field = FieldTypes.StandardSnapCentre,
+                            Origin = OriginTypes.Centre,
+                            Clocking = ClockTypes.Game,
+                            DimImmune = true
+                        };
+
+                        Add(okayText);
+                    }
                     {
-                        additiveButton?.FadeOut(100);
-                    };
+                        pDrawable additiveButton = null;
 
-                    okayButton.OnClick += delegate { dismiss(true); };
+                        cancelButton = new pSprite(TextureManager.Load(OsuTexture.notification_button_no), new Vector2(140, button_height))
+                        {
+                            Field = FieldTypes.StandardSnapCentre,
+                            Origin = OriginTypes.Centre,
+                            Clocking = ClockTypes.Game,
+                            DimImmune = true,
+                            DrawDepth = 0.99f,
+                            HandleClickOnUp = true
+                        };
+                        cancelButton.OnHover += delegate { additiveButton = cancelButton.AdditiveFlash(10000, 0.4f); };
 
-                    Add(okayButton);
+                        cancelButton.OnHoverLost += delegate
+                        {
+                            additiveButton?.FadeOut(100);
+                        };
 
-                    pText okayText = new pText(LocalisationManager.GetString(OsuString.Yes), 24, new Vector2(-140, button_height), Vector2.Zero, 1, true, Color4.White, true)
-                    {
-                        Field = FieldTypes.StandardSnapCentre,
-                        Origin = OriginTypes.Centre,
-                        Clocking = ClockTypes.Game,
-                        DimImmune = true
-                    };
+                        cancelButton.OnClick += delegate { dismiss(false); };
 
-                    Add(okayText);
-                }
-                {
-                    pDrawable additiveButton = null;
+                        Add(cancelButton);
 
-                    cancelButton = new pSprite(TextureManager.Load(OsuTexture.notification_button_no), new Vector2(140, button_height))
-                    {
-                        Field = FieldTypes.StandardSnapCentre,
-                        Origin = OriginTypes.Centre,
-                        Clocking = ClockTypes.Game,
-                        DimImmune = true,
-                        DrawDepth = 0.99f,
-                        HandleClickOnUp = true
-                    };
-                    cancelButton.OnHover += delegate { additiveButton = cancelButton.AdditiveFlash(10000, 0.4f); };
+                        pText cancelText = new pText(LocalisationManager.GetString(OsuString.No), 24, new Vector2(140, button_height), Vector2.Zero, 1, true, Color4.White, true)
+                        {
+                            Field = FieldTypes.StandardSnapCentre,
+                            Origin = OriginTypes.Centre,
+                            Clocking = ClockTypes.Game,
+                            DimImmune = true
+                        };
 
-                    cancelButton.OnHoverLost += delegate
-                    {
-                        additiveButton?.FadeOut(100);
-                    };
-
-                    cancelButton.OnClick += delegate { dismiss(false); };
-
-                    Add(cancelButton);
-
-                    pText cancelText = new pText(LocalisationManager.GetString(OsuString.No), 24, new Vector2(140, button_height), Vector2.Zero, 1, true, Color4.White, true)
-                    {
-                        Field = FieldTypes.StandardSnapCentre,
-                        Origin = OriginTypes.Centre,
-                        Clocking = ClockTypes.Game,
-                        DimImmune = true
-                    };
-
-                    Add(cancelText);
-                }
+                        Add(cancelText);
+                    }
                     break;
             }
         }

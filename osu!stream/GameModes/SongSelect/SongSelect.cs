@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
@@ -13,17 +10,20 @@ using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
 using osum.Localisation;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace osum.GameModes.SongSelect
 {
     public partial class SongSelectMode
     {
 #if iOS
-    #if !DIST
+#if !DIST
             public static string BeatmapPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.Personal); } }
-    #else
+#else
             public static string BeatmapPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/../Library/Caches"; } }
-    #endif
+#endif
 #elif ANDROID
         public static string BeatmapPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/Beatmaps"; } }
 #else
@@ -343,27 +343,27 @@ namespace osum.GameModes.SongSelect
             switch (State)
             {
                 case SelectState.SongSelect:
-                {
-                    float change = InputManager.PrimaryTrackingPoint.WindowDelta.Y;
-                    float bound = offsetBound;
+                    {
+                        float change = InputManager.PrimaryTrackingPoint.WindowDelta.Y;
+                        float bound = offsetBound;
 
-                    if ((songSelectOffset - bound < 0 && change < 0) || (songSelectOffset - bound > 0 && change > 0))
-                        change *= Math.Min(1, 10 / Math.Max(0.1f, Math.Abs(songSelectOffset - bound)));
-                    songSelectOffset = songSelectOffset + change;
-                    velocity = change;
-                }
+                        if ((songSelectOffset - bound < 0 && change < 0) || (songSelectOffset - bound > 0 && change > 0))
+                            change *= Math.Min(1, 10 / Math.Max(0.1f, Math.Abs(songSelectOffset - bound)));
+                        songSelectOffset = songSelectOffset + change;
+                        velocity = change;
+                    }
                     break;
                 case SelectState.DifficultySelect:
-                {
-                    float change = InputManager.PrimaryTrackingPoint.WindowDelta.X;
-                    float bound = Math.Min(mode_button_width, Math.Max(-mode_button_width, difficultySelectOffset));
+                    {
+                        float change = InputManager.PrimaryTrackingPoint.WindowDelta.X;
+                        float bound = Math.Min(mode_button_width, Math.Max(-mode_button_width, difficultySelectOffset));
 
-                    velocity = change * 4;
+                        velocity = change * 4;
 
-                    if ((difficultySelectOffset - bound < 0 && change < 0) || (difficultySelectOffset - bound > 0 && change > 0))
-                        change *= Math.Min(1, 10 / Math.Max(0.1f, Math.Abs(difficultySelectOffset - bound)));
-                    difficultySelectOffset = difficultySelectOffset + change;
-                }
+                        if ((difficultySelectOffset - bound < 0 && change < 0) || (difficultySelectOffset - bound > 0 && change > 0))
+                            change *= Math.Min(1, 10 / Math.Max(0.1f, Math.Abs(difficultySelectOffset - bound)));
+                        difficultySelectOffset = difficultySelectOffset + change;
+                    }
                     break;
             }
         }

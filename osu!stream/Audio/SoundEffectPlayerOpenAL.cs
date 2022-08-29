@@ -1,9 +1,9 @@
-using System;
-using System.IO;
 using OpenTK.Audio;
 using OpenTK.Audio.OpenAL;
 using osum.AssetManager;
 using osum.Helpers.Audio;
+using System;
+using System.IO;
 
 namespace osum.Audio
 {

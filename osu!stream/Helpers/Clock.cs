@@ -1,7 +1,7 @@
-using System;
-using System.Diagnostics;
 using osum.Audio;
 using osum.Support;
+using System;
+using System.Diagnostics;
 
 namespace osum.Helpers
 {

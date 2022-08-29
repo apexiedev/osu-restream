@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using OpenTK;
 using osum.Helpers;
 using osum.Input.Sources;
+using System.Collections.Generic;
 
 namespace osum.Input
 {

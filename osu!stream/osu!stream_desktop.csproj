@@ -77,6 +77,7 @@
     <Compile Include="GameModes\MainMenu\MenuBackground.cs" />
     <Compile Include="GameModes\MainMenu\NewsButton.cs" />
     <Compile Include="GameModes\Options\Credits.cs" />
+    <Compile Include="GameModes\Options\Mods.cs" />
     <Compile Include="GameModes\Options\Options.cs" />
     <Compile Include="GameModes\Play\Components\ComboCounter.cs" />
     <Compile Include="GameModes\Play\Components\Countdown.cs" />

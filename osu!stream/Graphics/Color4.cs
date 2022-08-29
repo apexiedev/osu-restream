@@ -50,10 +50,10 @@ namespace OpenTK.Graphics
         /// <param name="a">The alpha component of the new Color4 structure.</param>
         public Color4(byte r, byte g, byte b, byte a)
         {
-            this.R = ((float) r) / 255f;
-            this.G = ((float) g) / 255f;
-            this.B = ((float) b) / 255f;
-            this.A = ((float) a) / 255f;
+            this.R = ((float)r) / 255f;
+            this.G = ((float)g) / 255f;
+            this.B = ((float)b) / 255f;
+            this.A = ((float)a) / 255f;
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace OpenTK.Graphics
         /// <remarks>This method is intended only for compatibility with System.Drawing. It compresses the color into 8 bits per channel, which means color information is lost.</remarks>
         public int ToArgb()
         {
-            uint num = (((((uint) (this.A * 255f)) << 0x18) | (((uint) (this.R * 255f)) << 0x10)) | (((uint) (this.G * 255f)) << 8)) | ((uint) (this.B * 255f));
-            return (int) num;
+            uint num = (((((uint)(this.A * 255f)) << 0x18) | (((uint)(this.R * 255f)) << 0x10)) | (((uint)(this.G * 255f)) << 8)) | ((uint)(this.B * 255f));
+            return (int)num;
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace OpenTK.Graphics
         /// <returns>True obj is a Color4 structure with the same components as this Color4; false otherwise.</returns>
         public override bool Equals(object obj)
         {
-            return ((obj is Color4) && this.Equals((Color4) obj));
+            return ((obj is Color4) && this.Equals((Color4)obj));
         }
 
         /// <summary>
@@ -1564,7 +1564,7 @@ namespace OpenTK.Graphics
         /// <returns>A new System.Drawing.Color structure containing the converted components.</returns>
         public static explicit operator Color(Color4 color)
         {
-            return Color.FromArgb((int) (color.A * 255f), (int) (color.R * 255f), (int) (color.G * 255f), (int) (color.B * 255f));
+            return Color.FromArgb((int)(color.A * 255f), (int)(color.R * 255f), (int)(color.G * 255f), (int)(color.B * 255f));
         }
     }
 }

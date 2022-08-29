@@ -1,4 +1,3 @@
-using System;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
@@ -8,6 +7,7 @@ using osum.Graphics.Drawables;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Input;
+using System;
 
 namespace osum.GameplayElements.HitObjects.Osu
 {
@@ -98,7 +98,8 @@ namespace osum.GameplayElements.HitObjects.Osu
             spriteCircle =
                 new pSprite(TextureManager.Load(OsuTexture.spinner_circle),
                     FieldTypes.StandardSnapBottomCentre, OriginTypes.Centre, ClockTypes.Audio,
-                    SpinnerCentreFromBottom, SpriteManager.drawOrderFwdLowPrio(3), false, white) { ExactCoordinates = false };
+                    SpinnerCentreFromBottom, SpriteManager.drawOrderFwdLowPrio(3), false, white)
+                { ExactCoordinates = false };
             Sprites.Add(spriteCircle);
 
             //todo: possible optimisation by changing the draw method for filling of spinner metres.

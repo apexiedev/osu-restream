@@ -1,9 +1,9 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Platform.Android;
 using osum.Graphics;
+using System;
 
 namespace osum.Support.Android
 {

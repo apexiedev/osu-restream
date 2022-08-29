@@ -1,10 +1,10 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
 
 namespace osum.GameModes.Play.Components
 {

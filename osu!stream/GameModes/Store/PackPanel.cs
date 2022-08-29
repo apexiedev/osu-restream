@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
@@ -13,6 +9,10 @@ using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Libraries.NetLib;
 using osum.Localisation;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace osum.GameModes.Store
 {
@@ -301,7 +301,7 @@ namespace osum.GameModes.Store
 
                 back.Transform(new TransformationF(TransformationType.Fade, 1, 0, Clock.ModeTime, Clock.ModeTime + 700) { Looping = true });
 
-                fnr.onUpdate += delegate(object sender, long current, long total)
+                fnr.onUpdate += delegate (object sender, long current, long total)
                 {
                     if (back.Alpha != 1)
                     {
@@ -398,7 +398,7 @@ namespace osum.GameModes.Store
                 string downloadPath = "https://www.osustream.com/dl/preview.php";
                 string param = "pack=" + PackId + "&filename=" + NetRequest.UrlEncode(item.Filename) + "&format=" + PREFERRED_FORMAT;
                 previewRequest = new DataNetRequest(downloadPath, "POST", param);
-                previewRequest.onFinish += delegate(byte[] data, Exception ex)
+                previewRequest.onFinish += delegate (byte[] data, Exception ex)
                 {
                     if (previewRequest.AbortRequested) return;
 

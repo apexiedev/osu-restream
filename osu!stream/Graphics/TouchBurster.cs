@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Input;
 using osum.Input.Sources;
+using System.Collections.Generic;
 
 namespace osum.Graphics
 {

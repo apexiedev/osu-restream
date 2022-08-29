@@ -259,33 +259,33 @@ namespace osum.Helpers
         }
 
 
-//		/// <summary>
-//		/// A version of NextBytes that uses a pointer to set 4 bytes of the byte buffer in one operation
-//		/// thus providing a nice speedup. Note that this requires the unsafe compilation flag to be specified
-//		/// and so is commented out by default.
-//		/// </summary>
-//		/// <param name="buffer"></param>
-//		public unsafe void NextBytesUnsafe(byte[] buffer)
-//		{
-//			if(buffer.Length % 4 != 0)
-//				throw new ArgumentException("Buffer length must be divisible by 4", "buffer");
-//
-//			uint x=this.x, y=this.y, z=this.z, w=this.w;
-//			uint t;
-//
-//			fixed(byte* pByte0 = buffer)
-//			{
-//				uint* pDWord = (uint*)pByte0;
-//				for(int i = 0, len = buffer.Length>>2; i < len; i++) 
-//				{
-//					t=(x^(x<<11));
-//					x=y; y=z; z=w;
-//					*pDWord++ = w = (w^(w>>19))^(t^(t>>8));
-//				}
-//			}
-//
-//			this.x=x; this.y=y; this.z=z; this.w=w;
-//		}
+        //		/// <summary>
+        //		/// A version of NextBytes that uses a pointer to set 4 bytes of the byte buffer in one operation
+        //		/// thus providing a nice speedup. Note that this requires the unsafe compilation flag to be specified
+        //		/// and so is commented out by default.
+        //		/// </summary>
+        //		/// <param name="buffer"></param>
+        //		public unsafe void NextBytesUnsafe(byte[] buffer)
+        //		{
+        //			if(buffer.Length % 4 != 0)
+        //				throw new ArgumentException("Buffer length must be divisible by 4", "buffer");
+        //
+        //			uint x=this.x, y=this.y, z=this.z, w=this.w;
+        //			uint t;
+        //
+        //			fixed(byte* pByte0 = buffer)
+        //			{
+        //				uint* pDWord = (uint*)pByte0;
+        //				for(int i = 0, len = buffer.Length>>2; i < len; i++) 
+        //				{
+        //					t=(x^(x<<11));
+        //					x=y; y=z; z=w;
+        //					*pDWord++ = w = (w^(w>>19))^(t^(t>>8));
+        //				}
+        //			}
+        //
+        //			this.x=x; this.y=y; this.z=z; this.w=w;
+        //		}
 
         // Buffer 32 bits in bitBuffer, return 1 at a time, keep track of how many have been returned
         // with bitBufferIdx.

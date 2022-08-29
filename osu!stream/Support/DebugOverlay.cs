@@ -1,9 +1,9 @@
-﻿using System;
-using System.Drawing;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
+using System.Drawing;
 
 namespace osum.Support
 {

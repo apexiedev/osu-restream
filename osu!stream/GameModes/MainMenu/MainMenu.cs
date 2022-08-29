@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.Graphics;
@@ -8,37 +6,16 @@ using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Localisation;
 using osum.UI;
+using System;
+using System.Collections.Generic;
 
 #if iOS || ANDROID
-using OpenTK.Graphics.ES11;
 #if iOS
 using Foundation;
 using ObjCRuntime;
 using OpenGLES;
 #endif
 
-using TextureTarget = OpenTK.Graphics.ES11.All;
-using TextureParameterName = OpenTK.Graphics.ES11.All;
-using EnableCap = OpenTK.Graphics.ES11.All;
-using BlendingFactorSrc = OpenTK.Graphics.ES11.All;
-using BlendingFactorDest = OpenTK.Graphics.ES11.All;
-using PixelStoreParameter = OpenTK.Graphics.ES11.All;
-using VertexPointerType = OpenTK.Graphics.ES11.All;
-using ColorPointerType = OpenTK.Graphics.ES11.All;
-using ClearBufferMask = OpenTK.Graphics.ES11.All;
-using TexCoordPointerType = OpenTK.Graphics.ES11.All;
-using BeginMode = OpenTK.Graphics.ES11.All;
-using MatrixMode = OpenTK.Graphics.ES11.All;
-using PixelInternalFormat = OpenTK.Graphics.ES11.All;
-using PixelFormat = OpenTK.Graphics.ES11.All;
-using PixelType = OpenTK.Graphics.ES11.All;
-using ShaderType = OpenTK.Graphics.ES11.All;
-using VertexAttribPointerType = OpenTK.Graphics.ES11.All;
-using ProgramParameter = OpenTK.Graphics.ES11.All;
-using ShaderParameter = OpenTK.Graphics.ES11.All;
-using ErrorCode = OpenTK.Graphics.ES11.All;
-using TextureEnvParameter = OpenTK.Graphics.ES11.All;
-using TextureEnvTarget = OpenTK.Graphics.ES11.All;
 
 #else
 #endif
@@ -134,9 +111,9 @@ namespace osum.GameModes.MainMenu
             osuLogoSmall.Alpha = 0;
             spriteManager.Add(osuLogoSmall);
 
-            NewsButton = new NewsButton();
+            /* NewsButton = new NewsButton();
             spriteManager.Add(NewsButton);
-            NewsButton.Alpha = 0;
+            NewsButton.Alpha = 0; */
 
             menuBackgroundNew.Transform(fadeIn);
 
@@ -213,7 +190,7 @@ namespace osum.GameModes.MainMenu
                         LocalisationManager.GetString(OsuString.FirstRunWelcome),
                         LocalisationManager.GetString(OsuString.FirstRunTutorial),
                         NotificationStyle.YesNo,
-                        delegate(bool answer)
+                        delegate (bool answer)
                         {
                             if (answer)
                             {
@@ -258,8 +235,8 @@ namespace osum.GameModes.MainMenu
 
             Transformation move = new TransformationV(new Vector2(0, 50), Vector2.Zero, Clock.ModeTime + 500, Clock.ModeTime + 1000, EasingTypes.In);
             fadeIn = new TransformationF(TransformationType.Fade, 0, 0.98f, Clock.ModeTime + 500, Clock.ModeTime + 1000);
-            NewsButton.Transform(fadeIn);
-            NewsButton.Transform(move);
+            // NewsButton.Transform(fadeIn);
+            // NewsButton.Transform(move);
 
             osuLogo.Transformations.Clear();
             osuLogo.Transform(new TransformationF(TransformationType.Scale, osuLogo.ScaleScalar, osuLogo.ScaleScalar * 2.4f, Clock.ModeTime, Clock.ModeTime + 1300, EasingTypes.InDouble));
@@ -318,7 +295,7 @@ namespace osum.GameModes.MainMenu
         private pDrawable additiveStream;
         private MenuBackground menuBackgroundNew;
         private pSprite osuLogoSmall;
-        public NewsButton NewsButton;
+        // public NewsButton NewsButton;
 
         public override void Update()
         {

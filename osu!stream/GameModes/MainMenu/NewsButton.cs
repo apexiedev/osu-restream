@@ -1,11 +1,11 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes.Store;
 using osum.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Libraries.NetLib;
+using System;
 
 namespace osum.GameModes.MainMenu
 {

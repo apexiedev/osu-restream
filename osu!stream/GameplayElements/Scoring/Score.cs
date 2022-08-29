@@ -1,6 +1,6 @@
-﻿using System;
-using osum.Graphics;
+﻿using osum.Graphics;
 using osum.Helpers;
+using System;
 
 namespace osum.GameplayElements.Scoring
 {

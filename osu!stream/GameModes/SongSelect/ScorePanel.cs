@@ -1,9 +1,9 @@
-using System;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.GameplayElements.Scoring;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
 
 namespace osum.GameModes.SongSelect
 {

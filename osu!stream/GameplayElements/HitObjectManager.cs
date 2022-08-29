@@ -1,7 +1,5 @@
 #region Using Statements
 
-using System;
-using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes.Play;
@@ -14,6 +12,8 @@ using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Input;
 using osum.Support;
+using System;
+using System.Collections.Generic;
 
 #endregion
 

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using osum.Helpers;
+using System.Collections.Generic;
 
 namespace osum.Input.Sources
 {

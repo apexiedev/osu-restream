@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.GameModes.Store;
@@ -8,6 +6,8 @@ using osum.Graphics;
 using osum.Graphics.Primitives;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace osum.GameModes.MainMenu
 {
@@ -18,7 +18,7 @@ namespace osum.GameModes.MainMenu
         private readonly pQuad orange;
         private readonly pQuad blue;
         private readonly pQuad pink;
-        
+
         public List<pQuad> lines = new List<pQuad>();
 
         private Source whoosh;

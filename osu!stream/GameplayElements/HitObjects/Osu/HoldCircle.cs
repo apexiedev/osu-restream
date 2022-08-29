@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
 using osum.GameplayElements.Beatmaps;
@@ -9,6 +7,8 @@ using osum.Graphics.Drawables;
 using osum.Graphics.Primitives;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace osum.GameplayElements.HitObjects.Osu
 {
@@ -87,6 +87,12 @@ namespace osum.GameplayElements.HitObjects.Osu
         {
             Transformation fadeInTrack = new TransformationF(TransformationType.Fade, 0, 1, StartTime - DifficultyManager.PreEmpt, StartTime - DifficultyManager.PreEmpt + DifficultyManager.FadeIn);
             Transformation fadeOut = new TransformationF(TransformationType.Fade, 1, 0, EndTime, EndTime + DifficultyManager.HitWindow50);
+
+            if (GameBase.Config.GetValue(@"HiddenMod", false))
+            {
+                fadeInTrack = new TransformationF(TransformationType.Fade, 0, 1, StartTime - DifficultyManager.PreEmpt, StartTime - DifficultyManager.PreEmpt + DifficultyManager.FadeIn);
+                fadeOut = new TransformationF(TransformationType.Fade, 1, 0, EndTime, EndTime + DifficultyManager.FadeOut);
+            }
 
             activeOverlay = new pSprite(TextureManager.Load(OsuTexture.holdactive), FieldTypes.GamefieldSprites, OriginTypes.Centre, ClockTypes.Audio, Position, SpriteManager.drawOrderBwd(EndTime - 18), false, Color.White);
             spriteCollectionStart.Add(activeOverlay);

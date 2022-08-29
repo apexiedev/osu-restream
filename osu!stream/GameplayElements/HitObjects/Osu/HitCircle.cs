@@ -1,11 +1,11 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes.Play;
 using osum.Graphics;
 using osum.Graphics.Drawables;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
 
 namespace osum.GameplayElements.HitObjects.Osu
 {
@@ -37,7 +37,10 @@ namespace osum.GameplayElements.HitObjects.Osu
 
             SpriteApproachCircle = new ApproachCircle(Position, 1, false, 1, white);
             SpriteApproachCircle.Clocking = ClockTypes.Audio;
-            Sprites.Add(SpriteApproachCircle);
+            if(!GameBase.Config.GetValue(@"HiddenMod", false))
+            {
+                Sprites.Add(SpriteApproachCircle);
+            }
 
             if (ShowCircleText)
             {
@@ -56,11 +59,22 @@ namespace osum.GameplayElements.HitObjects.Osu
             Transformation fadeIn = new TransformationF(TransformationType.Fade, 0, 1,
                 startTime - DifficultyManager.PreEmpt, startTime - DifficultyManager.PreEmpt + DifficultyManager.FadeIn);
 
+            if (GameBase.Config.GetValue(@"HiddenMod", false))
+            {
+                fadeIn = new TransformationF(TransformationType.Fade, 0, 1,
+                startTime - DifficultyManager.PreEmpt, startTime - DifficultyManager.PreEmpt + DifficultyManager.FadeIn);
+            }
+
             SpriteHitCircle1.Transform(fadeIn);
             SpriteHitCircleText.Transform(fadeIn);
 
             Transformation fadeOut = new TransformationF(TransformationType.Fade, 1, 0,
                 startTime, startTime + DifficultyManager.HitWindow50);
+
+            if (GameBase.Config.GetValue(@"HiddenMod", false))
+            {
+                fadeOut = new TransformationF(TransformationType.Fade, 1, 0, startTime - DifficultyManager.PreEmpt + DifficultyManager.FadeIn, startTime + DifficultyManager.FadeOut / 2);
+            }
 
             SpriteHitCircle1.Transform(fadeOut);
             SpriteHitCircleText.Transform(fadeOut);
@@ -150,7 +164,7 @@ namespace osum.GameplayElements.HitObjects.Osu
             }
         }
 
-        public override bool IsVisible => SpriteHitCircle1.Alpha > 0;
+        public override bool IsVisible => SpriteHitCircle1.Alpha > 0 || GameBase.Config.GetValue(@"HiddenMod", false);
 
         internal override int ColourIndex
         {

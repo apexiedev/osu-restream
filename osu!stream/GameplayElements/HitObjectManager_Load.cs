@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes.Play;
 using osum.GameplayElements.Beatmaps;
@@ -11,6 +8,9 @@ using osum.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Support;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace osum.GameplayElements
 {
@@ -150,23 +150,23 @@ namespace osum.GameplayElements
 
                                 break;
                             case FileSection.TimingPoints:
-                            {
-                                string[] split = line.Split(',');
+                                {
+                                    string[] split = line.Split(',');
 
-                                if (split.Length > 2)
-                                    beatmap.ControlPoints.Add(
-                                        new ControlPoint(double.Parse(split[0], GameBase.nfi),
-                                            double.Parse(split[1], GameBase.nfi),
-                                            split[2][0] == '0' ? TimeSignatures.SimpleQuadruple : (TimeSignatures)int.Parse(split[2]),
-                                            (SampleSet)int.Parse(split[3]),
-                                            split.Length > 4
-                                                ? (CustomSampleSet)int.Parse(split[4])
-                                                : CustomSampleSet.Default,
-                                            int.Parse(split[5]),
-                                            split.Length > 6 ? split[6][0] == '1' : true,
-                                            split.Length > 7 ? split[7][0] == '1' : false));
-                                break;
-                            }
+                                    if (split.Length > 2)
+                                        beatmap.ControlPoints.Add(
+                                            new ControlPoint(double.Parse(split[0], GameBase.nfi),
+                                                double.Parse(split[1], GameBase.nfi),
+                                                split[2][0] == '0' ? TimeSignatures.SimpleQuadruple : (TimeSignatures)int.Parse(split[2]),
+                                                (SampleSet)int.Parse(split[3]),
+                                                split.Length > 4
+                                                    ? (CustomSampleSet)int.Parse(split[4])
+                                                    : CustomSampleSet.Default,
+                                                int.Parse(split[5]),
+                                                split.Length > 6 ? split[6][0] == '1' : true,
+                                                split.Length > 7 ? split[7][0] == '1' : false));
+                                    break;
+                                }
                             case FileSection.Editor:
                                 switch (key)
                                 {
@@ -205,158 +205,158 @@ namespace osum.GameplayElements
                                         beatmap.DifficultySliderTickRate =
                                             Math.Max(0.5, Math.Min(8, double.Parse(val, GameBase.nfi)));
                                         break;
-                                    /*case "ApproachRate":
-                                        beatmap.DifficultyApproachRate = Math.Min((byte)10, Math.Max((byte)0, byte.Parse(val)));
-                                        hasApproachRate = true;
-                                        break;*/
+                                        /*case "ApproachRate":
+                                            beatmap.DifficultyApproachRate = Math.Min((byte)10, Math.Max((byte)0, byte.Parse(val)));
+                                            hasApproachRate = true;
+                                            break;*/
                                 }
 
                                 break;
                             case FileSection.HitObjects:
-                            {
-                                if (fn > 0)
-                                    continue;
-
-                                if (!hitObjectPreInit)
                                 {
-                                    //ComboColoursReset();
-                                    hitObjectPreInit = true;
-                                }
+                                    if (fn > 0)
+                                        continue;
 
-                                string[] split = line.Split(',');
-
-                                int offset = 0;
-
-                                Difficulty difficulty = (Difficulty)int.Parse(split[offset++]);
-
-
-                                SampleSetInfo ssi = parseSampleSet(split[offset++]);
-
-                                int x = (int)Math.Max(0, Math.Min(512, decimal.Parse(split[offset++], GameBase.nfi)));
-                                int y = (int)Math.Max(0, Math.Min(512, decimal.Parse(split[offset++], GameBase.nfi)));
-                                int time = (int)decimal.Parse(split[offset++], GameBase.nfi);
-
-                                if (objnumber == 0) CountdownTime = time;
-                                else CountdownTime = Math.Min(CountdownTime, time);
-                                objnumber++;
-
-                                if (!shouldLoadDifficulty(difficulty))
-                                    continue;
-
-                                HitObjectType type = (HitObjectType)int.Parse(split[offset], GameBase.nfi) & ~HitObjectType.ColourHax;
-                                int comboOffset = (Convert.ToInt32(split[offset++], GameBase.nfi) >> 4) & 7; // mask out bits 5-7 for combo offset.
-                                HitObjectSoundType soundType = (HitObjectSoundType)int.Parse(split[offset++], GameBase.nfi);
-
-                                Vector2 pos = new Vector2(x, y);
-
-                                bool newCombo = (type & HitObjectType.NewCombo) > 0 || lastAddedSpinner || StreamHitObjects[(int)difficulty] == null || StreamHitObjects[(int)difficulty].Count == 0;
-
-                                HitObject h = null;
-
-                                //used for new combo forcing after a spinner.
-                                lastAddedSpinner = h is Spinner;
-
-                                if ((type & HitObjectType.Circle) > 0)
-                                {
-                                    h = hitFactory.CreateHitCircle(pos, time, newCombo, soundType, newCombo ? comboOffset : 0);
-                                }
-                                else if ((type & (HitObjectType.Slider | HitObjectType.Hold)) > 0)
-                                {
-                                    CurveTypes curveType = CurveTypes.Bezier;
-                                    int repeatCount = 0;
-                                    double length = 0;
-                                    List<Vector2> points = new List<Vector2>();
-                                    List<HitObjectSoundType> sounds = null;
-
-                                    string[] pointsplit = split[offset++].Split('|');
-                                    for (int i = 0; i < pointsplit.Length; i++)
+                                    if (!hitObjectPreInit)
                                     {
-                                        if (pointsplit[i].Length == 1)
+                                        //ComboColoursReset();
+                                        hitObjectPreInit = true;
+                                    }
+
+                                    string[] split = line.Split(',');
+
+                                    int offset = 0;
+
+                                    Difficulty difficulty = (Difficulty)int.Parse(split[offset++]);
+
+
+                                    SampleSetInfo ssi = parseSampleSet(split[offset++]);
+
+                                    int x = (int)Math.Max(0, Math.Min(512, decimal.Parse(split[offset++], GameBase.nfi)));
+                                    int y = (int)Math.Max(0, Math.Min(512, decimal.Parse(split[offset++], GameBase.nfi)));
+                                    int time = (int)decimal.Parse(split[offset++], GameBase.nfi);
+
+                                    if (objnumber == 0) CountdownTime = time;
+                                    else CountdownTime = Math.Min(CountdownTime, time);
+                                    objnumber++;
+
+                                    if (!shouldLoadDifficulty(difficulty))
+                                        continue;
+
+                                    HitObjectType type = (HitObjectType)int.Parse(split[offset], GameBase.nfi) & ~HitObjectType.ColourHax;
+                                    int comboOffset = (Convert.ToInt32(split[offset++], GameBase.nfi) >> 4) & 7; // mask out bits 5-7 for combo offset.
+                                    HitObjectSoundType soundType = (HitObjectSoundType)int.Parse(split[offset++], GameBase.nfi);
+
+                                    Vector2 pos = new Vector2(x, y);
+
+                                    bool newCombo = (type & HitObjectType.NewCombo) > 0 || lastAddedSpinner || StreamHitObjects[(int)difficulty] == null || StreamHitObjects[(int)difficulty].Count == 0;
+
+                                    HitObject h = null;
+
+                                    //used for new combo forcing after a spinner.
+                                    lastAddedSpinner = h is Spinner;
+
+                                    if ((type & HitObjectType.Circle) > 0)
+                                    {
+                                        h = hitFactory.CreateHitCircle(pos, time, newCombo, soundType, newCombo ? comboOffset : 0);
+                                    }
+                                    else if ((type & (HitObjectType.Slider | HitObjectType.Hold)) > 0)
+                                    {
+                                        CurveTypes curveType = CurveTypes.Bezier;
+                                        int repeatCount = 0;
+                                        double length = 0;
+                                        List<Vector2> points = new List<Vector2>();
+                                        List<HitObjectSoundType> sounds = null;
+
+                                        string[] pointsplit = split[offset++].Split('|');
+                                        for (int i = 0; i < pointsplit.Length; i++)
                                         {
-                                            switch (pointsplit[i])
+                                            if (pointsplit[i].Length == 1)
                                             {
-                                                case "C":
-                                                    curveType = CurveTypes.Catmull;
-                                                    break;
-                                                case "B":
-                                                    curveType = CurveTypes.Bezier;
-                                                    break;
-                                                case "L":
-                                                    curveType = CurveTypes.Linear;
-                                                    break;
-                                                case "P":
-                                                    curveType = CurveTypes.PerfectCurve;
-                                                    break;
+                                                switch (pointsplit[i])
+                                                {
+                                                    case "C":
+                                                        curveType = CurveTypes.Catmull;
+                                                        break;
+                                                    case "B":
+                                                        curveType = CurveTypes.Bezier;
+                                                        break;
+                                                    case "L":
+                                                        curveType = CurveTypes.Linear;
+                                                        break;
+                                                    case "P":
+                                                        curveType = CurveTypes.PerfectCurve;
+                                                        break;
+                                                }
+
+                                                continue;
                                             }
 
-                                            continue;
+                                            string[] temp = pointsplit[i].Split(':');
+                                            Vector2 v = new Vector2((float)Convert.ToDouble(temp[0], GameBase.nfi),
+                                                (float)Convert.ToDouble(temp[1], GameBase.nfi));
+                                            points.Add(v);
                                         }
 
-                                        string[] temp = pointsplit[i].Split(':');
-                                        Vector2 v = new Vector2((float)Convert.ToDouble(temp[0], GameBase.nfi),
-                                            (float)Convert.ToDouble(temp[1], GameBase.nfi));
-                                        points.Add(v);
-                                    }
+                                        repeatCount = Convert.ToInt32(split[offset++], GameBase.nfi);
 
-                                    repeatCount = Convert.ToInt32(split[offset++], GameBase.nfi);
+                                        length = Convert.ToDouble(split[offset++], GameBase.nfi);
 
-                                    length = Convert.ToDouble(split[offset++], GameBase.nfi);
+                                        List<SampleSetInfo> listSampleSets = null;
 
-                                    List<SampleSetInfo> listSampleSets = null;
-
-                                    //Per-endpoint Sample Additions
-                                    if (split[offset].Length > 0)
-                                    {
-                                        string[] adds = split[offset++].Split('|');
-
-                                        if (adds.Length > 0)
+                                        //Per-endpoint Sample Additions
+                                        if (split[offset].Length > 0)
                                         {
-                                            sounds = new List<HitObjectSoundType>(adds.Length);
-                                            for (int i = 0; i < adds.Length; i++)
+                                            string[] adds = split[offset++].Split('|');
+
+                                            if (adds.Length > 0)
                                             {
-                                                int sound;
-                                                int.TryParse(adds[i], out sound);
-                                                sounds.Add((HitObjectSoundType)sound);
+                                                sounds = new List<HitObjectSoundType>(adds.Length);
+                                                for (int i = 0; i < adds.Length; i++)
+                                                {
+                                                    int sound;
+                                                    int.TryParse(adds[i], out sound);
+                                                    sounds.Add((HitObjectSoundType)sound);
+                                                }
                                             }
                                         }
-                                    }
-                                    else
-                                        offset += 1;
+                                        else
+                                            offset += 1;
 
-                                    if (split.Length > 13)
-                                    {
-                                        string[] samplesets = split[13].Split(':');
-                                        listSampleSets = new List<SampleSetInfo>(samplesets.Length);
-                                        for (int i = 0; i < samplesets.Length; i++)
+                                        if (split.Length > 13)
                                         {
-                                            SampleSetInfo node_ssi = parseSampleSet(samplesets[i]);
-                                            listSampleSets.Add(node_ssi);
+                                            string[] samplesets = split[13].Split(':');
+                                            listSampleSets = new List<SampleSetInfo>(samplesets.Length);
+                                            for (int i = 0; i < samplesets.Length; i++)
+                                            {
+                                                SampleSetInfo node_ssi = parseSampleSet(samplesets[i]);
+                                                listSampleSets.Add(node_ssi);
+                                            }
+                                        }
+
+                                        if ((repeatCount > 1 && length < 50) ||
+                                            (repeatCount > 4 && length < 100) ||
+                                            (type & HitObjectType.Hold) > 0)
+                                        {
+                                            h = hitFactory.CreateHoldCircle(pos, time, newCombo, soundType, repeatCount, length, sounds, newCombo ? comboOffset : 0, Convert.ToDouble(split[offset++], GameBase.nfi), Convert.ToDouble(split[offset++], GameBase.nfi), listSampleSets);
+                                        }
+                                        else
+                                        {
+                                            h = hitFactory.CreateSlider(pos, time, newCombo, soundType, curveType, repeatCount, length, points, sounds, newCombo ? comboOffset : 0, Convert.ToDouble(split[offset++], GameBase.nfi), Convert.ToDouble(split[offset++], GameBase.nfi), listSampleSets);
                                         }
                                     }
-
-                                    if ((repeatCount > 1 && length < 50) ||
-                                        (repeatCount > 4 && length < 100) ||
-                                        (type & HitObjectType.Hold) > 0)
+                                    else if ((type & HitObjectType.Spinner) > 0)
                                     {
-                                        h = hitFactory.CreateHoldCircle(pos, time, newCombo, soundType, repeatCount, length, sounds, newCombo ? comboOffset : 0, Convert.ToDouble(split[offset++], GameBase.nfi), Convert.ToDouble(split[offset++], GameBase.nfi), listSampleSets);
+                                        h = hitFactory.CreateSpinner(time, Convert.ToInt32(split[offset++], GameBase.nfi), soundType);
                                     }
-                                    else
-                                    {
-                                        h = hitFactory.CreateSlider(pos, time, newCombo, soundType, curveType, repeatCount, length, points, sounds, newCombo ? comboOffset : 0, Convert.ToDouble(split[offset++], GameBase.nfi), Convert.ToDouble(split[offset++], GameBase.nfi), listSampleSets);
-                                    }
-                                }
-                                else if ((type & HitObjectType.Spinner) > 0)
-                                {
-                                    h = hitFactory.CreateSpinner(time, Convert.ToInt32(split[offset++], GameBase.nfi), soundType);
-                                }
 
-                                //Make sure we have a valid  hitObject and actually add it to this manager.
-                                if (h != null)
-                                {
-                                    h.SampleSet = ssi;
-                                    Add(h, difficulty);
+                                    //Make sure we have a valid  hitObject and actually add it to this manager.
+                                    if (h != null)
+                                    {
+                                        h.SampleSet = ssi;
+                                        Add(h, difficulty);
+                                    }
                                 }
-                            }
                                 break;
                             case FileSection.Unknown:
                                 continue; //todo: readd this?  not sure if we need it anymore.

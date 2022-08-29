@@ -1,9 +1,9 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using osum.Helpers;
-using ManagedBass;
+﻿using ManagedBass;
 using ManagedBass.Aac;
 using osum.Audio.BassNetUtils;
+using osum.Helpers;
+using System;
+using System.Runtime.InteropServices;
 
 namespace osum.Audio
 {
@@ -19,7 +19,7 @@ namespace osum.Audio
         {
             // BassNet.Registration("poo@poo.com", "2X25242411252422");
 
-            Bass.Init(-1, 44100, DeviceInitFlags.Default, IntPtr.Zero);
+            Bass.Init(-1, 44100, DeviceInitFlags.Latency, IntPtr.Zero);
 
             //Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_BUFFER, 100);
             //Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATEPERIOD, 10);
@@ -74,11 +74,11 @@ namespace osum.Audio
             FreeMusic();
 
             audioHandle = GCHandle.Alloc(audio, GCHandleType.Pinned);
-            
+
             audioStream = Bass.CreateStream(audioHandle.AddrOfPinnedObject(), 0, audio.Length, BassFlags.Prescan | (looping ? BassFlags.Loop : 0));
 
             // If loading fails, attempts to load as an AAC based file
-            if(Bass.LastError != Errors.OK)
+            if (Bass.LastError != Errors.OK)
                 audioStream = BassAac.CreateMp4Stream(audioHandle.AddrOfPinnedObject(), 0, audio.Length, BassFlags.Prescan | (looping ? BassFlags.Loop : 0));
 
             updateVolume();

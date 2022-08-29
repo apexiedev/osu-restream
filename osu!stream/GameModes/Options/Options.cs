@@ -1,4 +1,3 @@
-using System;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
@@ -9,6 +8,7 @@ using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Localisation;
 using osum.UI;
+using System;
 
 #if iOS
 using Accounts;
@@ -68,7 +68,7 @@ namespace osum.GameModes.Options
 
             vPos += 70;
 
-            button = new pButton(LocalisationManager.GetString(OsuString.OnlineHelp), new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { GameBase.Instance.ShowWebView("https://www.osustream.com/help/", "Online Help"); });
+            button = new pButton("Discord Server", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { GameBase.Instance.ShowWebView("https://dsc.gg/apexie", "Apexie's Discord Server"); });
 
             smd.Add(button);
 
@@ -95,7 +95,7 @@ namespace osum.GameModes.Options
             vPos += 80;
 
             soundEffectSlider = new SliderControl(LocalisationManager.GetString(OsuString.EffectVolume), AudioEngine.Effect.Volume, new Vector2(button_x_offset - 30, vPos),
-                delegate(float v)
+                delegate (float v)
                 {
                     AudioEngine.Effect.Volume = v;
                     if (Clock.ModeTime / 200 != lastEffectSound)
@@ -121,7 +121,7 @@ namespace osum.GameModes.Options
             vPos += 60;
 
             soundEffectSlider = new SliderControl(LocalisationManager.GetString(OsuString.MusicVolume), AudioEngine.Music.MaxVolume, new Vector2(button_x_offset - 30, vPos),
-                delegate(float v) { AudioEngine.Music.MaxVolume = v; });
+                delegate (float v) { AudioEngine.Music.MaxVolume = v; });
             smd.Add(soundEffectSlider);
 
             vPos += 60;
@@ -129,7 +129,7 @@ namespace osum.GameModes.Options
             const int offset_range = 32;
 
             universalOffsetSlider = new SliderControl(LocalisationManager.GetString(OsuString.UniversalOffset), (float)(Clock.USER_OFFSET + offset_range) / (offset_range * 2), new Vector2(button_x_offset - 30, vPos),
-                delegate(float v)
+                delegate (float v)
                 {
                     GameBase.Config.SetValue("offset", (Clock.USER_OFFSET = (int)((v - 0.5f) * offset_range * 2)));
                     if (universalOffsetSlider != null) //will be null on first run.
@@ -147,7 +147,16 @@ namespace osum.GameModes.Options
             text.TextBounds.X = 600;
             smd.Add(text);
 
-            vPos += (int)text.MeasureText().Y + 50;
+            // vPos += (int)text.MeasureText().Y + 50;
+            vPos += 80;
+
+            text = new pText("Mods and Tweaks", 36, new Vector2(header_x_offset, vPos), 1, true, Color4.White) { Bold = true, TextShadow = true };
+            smd.Add(text);
+
+            vPos += 90;
+
+            button = new pButton("Mods", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { Director.ChangeMode(OsuMode.Mods); /* NotYetImplemented(); */ });
+            smd.Add(button);
 
             UpdateButtons();
 
@@ -278,7 +287,7 @@ namespace osum.GameModes.Options
         {
             Notification notification = new Notification(LocalisationManager.GetString(OsuString.UseFingerGuides), LocalisationManager.GetString(OsuString.UseGuideFingers_Explanation),
                 NotificationStyle.YesNo,
-                delegate(bool yes)
+                delegate (bool yes)
                 {
                     GameBase.Config.SetValue(@"GuideFingers", yes);
 
@@ -293,11 +302,24 @@ namespace osum.GameModes.Options
             buttonFingerGuides.SetStatus(GameBase.Config.GetValue(@"GuideFingers", false));
         }
 
+        internal static void NotYetImplemented()
+        {
+            Notification notification = new Notification("Not implemented!", "This feature has not yet been implemented, we are still working on it. In the meantime, why not join our Discord server?",
+                NotificationStyle.YesNo, delegate (bool yes)
+                {
+                    if (yes)
+                    {
+                        GameBase.Instance.ShowWebView("https://dsc.gg/apexie", "Apexie's World");
+                    }
+                });
+            GameBase.Notify(notification);
+        }
+
         internal static void DisplayEasyModeDialog()
         {
             Notification notification = new Notification(LocalisationManager.GetString(OsuString.DefaultToEasyMode), LocalisationManager.GetString(OsuString.DefaultToEasyMode_Explanation),
                 NotificationStyle.YesNo,
-                delegate(bool yes)
+                delegate (bool yes)
                 {
                     GameBase.Config.SetValue(@"EasyMode", yes);
 

@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics;
 using osum.Audio;
@@ -9,6 +7,8 @@ using osum.GameplayElements.HitObjects.Osu;
 using osum.Graphics;
 using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace osum.GameModes.Play.Components
 {

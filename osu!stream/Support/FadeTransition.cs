@@ -1,6 +1,6 @@
-﻿using System;
-using osum.Graphics.Sprites;
+﻿using osum.Graphics.Sprites;
 using osum.Helpers;
+using System;
 
 namespace osum.Support
 {

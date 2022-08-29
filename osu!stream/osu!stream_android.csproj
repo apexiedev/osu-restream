@@ -18,7 +18,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -61,11 +61,18 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\Anthony\AppData\Local\Xamarin\Mono for Android\Keystore\anthony\anthony.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>anthony</AndroidSigningKeyAlias>
+    <AndroidSigningStorePass>
+    </AndroidSigningStorePass>
+    <AndroidSigningKeyPass>
+    </AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
-<!--    <Reference Include="Bass.Net.Android">-->
-<!--      <HintPath>.\Bass.Net.Android.dll</HintPath>-->
-<!--    </Reference>-->
+    <!--    <Reference Include="Bass.Net.Android">-->
+    <!--      <HintPath>.\Bass.Net.Android.dll</HintPath>-->
+    <!--    </Reference>-->
     <Reference Include="OpenTK-1.0" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -217,6 +224,7 @@
     <Compile Include="Graphics\Sprites\pSpriteDynamic.cs" />
     <Compile Include="GameModes\Play\Components\GuideFinger.cs" />
     <Compile Include="GameModes\Options\Options.cs" />
+    <Compile Include="GameModes\Options\Mods.cs" />
     <Compile Include="GameModes\Options\Credits.cs" />
     <Compile Include="UI\Notification.cs" />
     <Compile Include="Helpers\pConfigManager.cs" />
@@ -333,7 +341,16 @@
     <PackageReference Include="Xamarin.Android.Support.Vector.Drawable">
       <Version>28.0.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI">
+      <Version>1.0.0.14</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
+      <Version>2.4.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Google.Android.Material">
+      <Version>1.6.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

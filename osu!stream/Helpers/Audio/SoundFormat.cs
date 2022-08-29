@@ -28,8 +28,8 @@
 #endregion
 
 
-using System;
 using OpenTK.Audio.OpenAL;
+using System;
 
 namespace osum.Helpers.Audio
 {

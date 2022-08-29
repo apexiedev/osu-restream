@@ -1,5 +1,4 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using osum.GameModes.Play.Components;
 using osum.GameModes.SongSelect;
@@ -7,6 +6,7 @@ using osum.GameplayElements;
 using osum.Graphics.Sprites;
 using osum.Helpers;
 using osum.Support;
+using System;
 
 namespace osum.GameModes.Play
 {
