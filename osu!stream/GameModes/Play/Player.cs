@@ -129,6 +129,8 @@ namespace osum.GameModes.Play
                 touchBurster = new TouchBurster(!Autoplay);
 
             loadBeatmap();
+            
+            PhotosensitiveMode = GameBase.Config.GetValue(@"PhotosensitiveMode", false);
 
             topMostSpriteManager = new SpriteManager();
 
@@ -295,7 +297,7 @@ namespace osum.GameModes.Play
 
         private void countdown_OnPulse()
         {
-            PulseBackground(true);
+            if(!PhotosensitiveMode) PulseBackground(true);
         }
 
         protected virtual void resetScore()
@@ -619,7 +621,7 @@ namespace osum.GameModes.Play
                 CurrentScore.hitScore += scoreChange;
 
             if (mapBackgroundImage != null)
-                PulseBackground(scoreChange > 0);
+                if(!PhotosensitiveMode) PulseBackground(scoreChange > 0);
 
             if (increaseCombo && comboCounter != null)
             {
@@ -1023,6 +1025,7 @@ namespace osum.GameModes.Play
         public float Progress => pMathHelper.ClampToOne((float)Clock.AudioTime / lastObjectTime);
 
         protected bool ShowGuideFingers;
+        protected bool PhotosensitiveMode;
         protected ProgressDisplay progressDisplay;
         private pSpriteDynamic mapBackgroundImage;
         private pSprite menuPauseButton;

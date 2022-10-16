@@ -267,9 +267,22 @@ namespace osum.GameModes.MainMenu
 
             //Start playing song select BGM.
 #if iOS
-            bool didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.m4a", true);
+            bool didLoad;
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false)) {
+                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.m4a", true);
+            } else {
+                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.m4a", true);
+            }
 #else
-            bool didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.mp3", true);
+            bool didLoad;
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.mp3", true);
+            }
+            else
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.mp3", true);
+            }
 #endif
 
             return didLoad;

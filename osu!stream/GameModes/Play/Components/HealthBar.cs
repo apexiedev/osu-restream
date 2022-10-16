@@ -143,6 +143,7 @@ namespace osum.GameModes.Play.Components
         internal virtual void KiExplode()
         {
             if (!visible) return;
+            if (GameBase.Config.GetValue(@"PhotosensitiveMode", false)) return;
 
             burstScale.StartTime = burstFade.StartTime = Clock.Time;
             burstScale.EndTime = burstFade.EndTime = Clock.Time + 180;

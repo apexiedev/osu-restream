@@ -68,10 +68,33 @@ namespace osum.GameModes.Options
             hiddenMod = new pButton("Hidden", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayHiddenModDialog(); });
             smd.Add(hiddenMod);
 
-            vPos += 70;
+            vPos += 50;
+            
+            text = new pText("Tweaks", 36, new Vector2(header_x_offset, vPos), 1, true, Color4.White) { Bold = true, TextShadow = true };
+            smd.Add(text);
 
-            doubleTimeMod = new pButton("Double Time", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayDoubleTimeModDialog(); });
-            smd.Add(doubleTimeMod);
+            vPos += 50;
+            
+            text = new pText("Tweaks let you customize the game to your likings.", 24, new Vector2(0, vPos), 1, true, Color4.LightGray) { TextShadow = true };
+            text.Field = FieldTypes.StandardSnapTopCentre;
+            text.Origin = OriginTypes.TopCentre;
+            text.TextAlignment = TextAlignment.Centre;
+            text.MeasureText(); //force a measure as this is the last sprite to be added to the draggable area (need height to be precalculated)
+            text.TextBounds.X = 600;
+            smd.Add(text);
+            
+            vPos += (int)text.MeasureText().Y + 10;
+            
+            oldSoundtrack = new pButton("Old Soundtrack", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayOldSoundtrackDialog(); });
+            smd.Add(oldSoundtrack);
+
+            vPos += 60;
+            
+            photosensitiveMode = new pButton("Photosensitive Mode", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayPhotosensitiveModeDialog(); });
+            smd.Add(photosensitiveMode);
+
+            // doubleTimeMod = new pButton("Double Time", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayDoubleTimeModDialog(); });
+            // smd.Add(doubleTimeMod);
 
             UpdateButtons();
 
@@ -82,7 +105,8 @@ namespace osum.GameModes.Options
 
         private pSprite s_Header;
         private pButton hiddenMod;
-        private pButton doubleTimeMod;
+        private pButton oldSoundtrack;
+        private pButton photosensitiveMode;
 
         internal static void DisplayHiddenModDialog()
         {
@@ -96,13 +120,25 @@ namespace osum.GameModes.Options
             GameBase.Notify(notification);
         }
 
-        internal static void DisplayDoubleTimeModDialog()
+        internal static void DisplayOldSoundtrackDialog()
         {
-            Notification notification = new Notification("Use the DT mod?", "The double time mod makes the song play faster, this means the circles will also appear faster and you need to stay in sync with them. Do you want to enable it?",
+            Notification notification = new Notification("Enable the old OST?", "Feeling nostalgic? Enable the old soundtrack to feel like it was 2012 again for osu!stream.",
                 NotificationStyle.YesNo,
                 delegate (bool yes)
                 {
-                    GameBase.Config.SetValue(@"DoubleTimeMod", yes);
+                    GameBase.Config.SetValue(@"OldSoundtrack", yes);
+                    if (Director.CurrentMode is Mods o) o.UpdateButtons();
+                });
+            GameBase.Notify(notification);
+        }
+        
+        internal static void DisplayPhotosensitiveModeDialog()
+        {
+            Notification notification = new Notification("Enable photosensitive mode?", "If you suffer from epileptic seizures, you can enable photosensitive mode to reduce the amount of flashing lights in the game.",
+                NotificationStyle.YesNo,
+                delegate (bool yes)
+                {
+                    GameBase.Config.SetValue(@"PhotosensitiveMode", yes);
                     if (Director.CurrentMode is Mods o) o.UpdateButtons();
                 });
             GameBase.Notify(notification);
@@ -111,7 +147,9 @@ namespace osum.GameModes.Options
         private void UpdateButtons()
         {
             hiddenMod.SetStatus(GameBase.Config.GetValue(@"HiddenMod", false));
-            doubleTimeMod.SetStatus(GameBase.Config.GetValue(@"DoubleTimeMod", false));
+            oldSoundtrack.SetStatus(GameBase.Config.GetValue(@"OldSoundtrack", false));
+            photosensitiveMode.SetStatus(GameBase.Config.GetValue(@"PhotosensitiveMode", false));
+            // doubleTimeMod.SetStatus(GameBase.Config.GetValue(@"DoubleTimeMod", false));
         }        
 
         public override void Dispose()

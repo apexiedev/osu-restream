@@ -289,11 +289,23 @@ namespace osum.GameModes.SongSelect
         {
             //Start playing song select BGM.
 #if iOS
-            if (AudioEngine.Music.Load("Skins/Default/songselect.m4a", true))
+            bool didLoad;
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/songselect-old.m4a", true);
+            } else {
+                didLoad = AudioEngine.Music.Load("Skins/Default/songselect.m4a", true);
+            }
 #else
-            if (AudioEngine.Music.Load("Skins/Default/songselect.mp3", true))
+            bool didLoad;
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/songselect-old.mp3", true);
+            } else {
+                didLoad = AudioEngine.Music.Load("Skins/Default/songselect.mp3", true);
+            }
 #endif
-                AudioEngine.Music.Play();
+            if (didLoad) AudioEngine.Music.Play();
         }
 
         public override void Dispose()

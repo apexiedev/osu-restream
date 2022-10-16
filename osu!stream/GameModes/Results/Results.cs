@@ -464,9 +464,21 @@ namespace osum.GameModes.Results
         {
             //Start playing song select BGM.
 #if iOS
-            bool didLoad = AudioEngine.Music.Load("Skins/Default/results.m4a", true);
+            bool didLoad;
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/results-old.m4a", true);
+            } else {
+                didLoad = AudioEngine.Music.Load("Skins/Default/results.m4a", true);
+            }
 #else
-            bool didLoad = AudioEngine.Music.Load("Skins/Default/results.mp3", true);
+            bool didLoad;
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/results-old.mp3", true);
+            } else {
+                didLoad = AudioEngine.Music.Load("Skins/Default/results.mp3", true);
+            }
 #endif
             if (didLoad)
                 AudioEngine.Music.Play();
