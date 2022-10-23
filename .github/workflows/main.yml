@@ -19,7 +19,7 @@ jobs:
         android-manifest-path: osu!stream/Properties/AndroidManifest.xml
         version-name: ${{ secrets.APP_VERSION }}
         version-code: ${{ github.run_number }}
-    
+  
     - name: Setup Android signing 
       run: (echo ${{ secrets.KEYSTORE }} | base64 --decode) > /Users/runner/work/osu-restream/keystore.jks
 
@@ -31,10 +31,16 @@ jobs:
     - name: Install dependencies
       run: nuget restore osu!stream_android.sln
 
-    - name: Build
-      run: msbuild osu!stream/osu!stream_android.csproj /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=apexiedev /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyStore=/Users/runner/work/osu-restream/keystore.jks /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} 
+    - uses: bradyjoslin/xamarinandroid-signedbuild-action@v1
+      with:
+          csproj_path: osu!stream/osu!stream_android.csproj
+          signing_keystore: ${{ secrets.KEYSTORE }}
+          keystore_password: ${{ secrets.KEYSTORE_PASSWORD }}
+          signing_key_alias: ${{ secrets.KEYSTORE_ALIAS }}
+          signing_key_password: ${{ secrets.KEYSTORE_PASSWORD }}
+          configuration: "Release"
     
     - uses: actions/upload-artifact@v3
       with:
         name: osurestream
-        path: "/Users/runner/work/osu-restream/osu!stream/bin/Release/eu.apexie.osustream-Signed.apk"
+        path: "osu!stream/bin/Release/**Signed.apk"
