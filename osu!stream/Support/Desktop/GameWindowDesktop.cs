@@ -22,7 +22,7 @@ namespace osum.Support.Desktop
         public GameWindowDesktop()
             : base(1280, 720, GraphicsMode.Default, "osu!stream")
         {
-            VSync = VSyncMode.On;
+            VSync = VSyncMode.Off;
             //GameBase.WindowSize = new Size(960,640);
         }
 

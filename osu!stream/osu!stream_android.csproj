@@ -296,6 +296,7 @@
     <AndroidAsset Include="Skins\Default\credits.mp3" />
     <AndroidAsset Include="Skins\Default\mainmenu.mp3" />
     <AndroidAsset Include="Skins\Default\mainmenu-old.mp3" />
+    <AndroidAsset Include="Skins\Default\welcometoosu.mp3" />
     <AndroidAsset Include="Skins\Default\results.mp3" />
     <AndroidAsset Include="Skins\Default\results-old.mp3" />
     <AndroidAsset Include="Skins\Default\songselect.mp3" />

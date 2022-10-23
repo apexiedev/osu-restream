@@ -33,7 +33,25 @@ namespace osum.GameModes.Play
             Difficulty = Difficulty.None;
             Beatmap = null;
 
-            MainMenu.MainMenu.InitializeBgm();
+#if IOS
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                AudioEngine.Music.Load("Skins/Default/mainmenu-old.mp3", true);
+            }
+            else
+            {
+                AudioEngine.Music.Load("Skins/Default/mainmenu.mp3", true);
+            }
+#else
+            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            {
+                AudioEngine.Music.Load("Skins/Default/mainmenu-old.mp3", true);
+            }
+            else
+            {
+                AudioEngine.Music.Load("Skins/Default/mainmenu.mp3", true);
+            }
+#endif
 
             base.Initialize();
 

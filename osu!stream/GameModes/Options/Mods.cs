@@ -89,6 +89,11 @@ namespace osum.GameModes.Options
             smd.Add(oldSoundtrack);
 
             vPos += 60;
+
+            welcomeToOsu = new pButton("osu! 2015 theme", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayWelcomeToOsuDialog(); });
+            smd.Add(welcomeToOsu);
+
+            vPos += 60;
             
             photosensitiveMode = new pButton("Photosensitive Mode", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayPhotosensitiveModeDialog(); });
             smd.Add(photosensitiveMode);
@@ -106,6 +111,7 @@ namespace osum.GameModes.Options
         private pSprite s_Header;
         private pButton hiddenMod;
         private pButton oldSoundtrack;
+        private pButton welcomeToOsu;
         private pButton photosensitiveMode;
 
         internal static void DisplayHiddenModDialog()
@@ -132,6 +138,18 @@ namespace osum.GameModes.Options
             GameBase.Notify(notification);
         }
         
+        internal static void DisplayWelcomeToOsuDialog()
+        {
+            Notification notification = new Notification("Enable the osu! 2015 theme?", "Want to have the osu! 2015 theme? Enable it here.",
+                NotificationStyle.YesNo,
+                delegate (bool yes)
+                {
+                    GameBase.Config.SetValue(@"WelcomeToOsuTheme", yes);
+                    if (Director.CurrentMode is Mods o) o.UpdateButtons();
+                });
+            GameBase.Notify(notification);
+        }
+        
         internal static void DisplayPhotosensitiveModeDialog()
         {
             Notification notification = new Notification("Enable photosensitive mode?", "If you suffer from epileptic seizures, you can enable photosensitive mode to reduce the amount of flashing lights in the game.",
@@ -148,6 +166,7 @@ namespace osum.GameModes.Options
         {
             hiddenMod.SetStatus(GameBase.Config.GetValue(@"HiddenMod", false));
             oldSoundtrack.SetStatus(GameBase.Config.GetValue(@"OldSoundtrack", false));
+            welcomeToOsu.SetStatus(GameBase.Config.GetValue(@"WelcomeToOsuTheme", false));
             photosensitiveMode.SetStatus(GameBase.Config.GetValue(@"PhotosensitiveMode", false));
             // doubleTimeMod.SetStatus(GameBase.Config.GetValue(@"DoubleTimeMod", false));
         }        

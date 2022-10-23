@@ -208,7 +208,10 @@ namespace osum.GameModes.MainMenu
             else
             {
                 if (Director.LastOsuMode == OsuMode.Tutorial)
+                {
+                    InitializeBgm();
                     AudioEngine.Music.SeekTo(0);
+                }
                 AudioEngine.Music.Play();
             }
 
@@ -268,20 +271,30 @@ namespace osum.GameModes.MainMenu
             //Start playing song select BGM.
 #if iOS
             bool didLoad;
-            if (GameBase.Config.GetValue(@"OldSoundtrack", false)) {
-                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.m4a", true);
+            if (GameBase.Config.GetValue(@"WelcomeToOsuTheme", false)) {
+                didLoad = AudioEngine.Music.Load("Skins/Default/welcometoosu.m4a", true);
             } else {
-                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.m4a", true);
+                if (GameBase.Config.GetValue(@"OldSoundtrack", false)) {
+                    didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.m4a", true);
+                } else {
+                    didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.m4a", true);
+                }
             }
 #else
             bool didLoad;
-            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
-            {
-                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.mp3", true);
+            if (GameBase.Config.GetValue(@"WelcomeToOsuTheme", false)) {
+                didLoad = AudioEngine.Music.Load("Skins/Default/welcometoosu.mp3", true);
             }
             else
             {
-                didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.mp3", true);
+                if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+                {
+                    didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.mp3", true);
+                }
+                else
+                {
+                    didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.mp3", true);
+                }
             }
 #endif
 
