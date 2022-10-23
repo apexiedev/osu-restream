@@ -21,7 +21,7 @@ jobs:
         version-code: ${{ github.run_number }}
     
     - name: Setup Android signing 
-      run: (echo ${{ secrets.KEYSTORE }} | base64 —-decode) > keystore.jks
+      run: (echo ${{ secrets.KEYSTORE }} | base64 --decode) > keystore.jks
 
     - name: Setup .NET Core SDK 6.0.x
       uses: actions/setup-dotnet@v3
