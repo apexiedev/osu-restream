@@ -1,4 +1,4 @@
-name: Build Xamarin.Android app
+name: Build and upload osu!restream
 
 on: [push]
 
@@ -22,4 +22,9 @@ jobs:
       run: nuget restore osu!stream_android.sln
 
     - name: Build
-      run: msbuild osu!stream/osu!stream_android.csproj /t:PackageForAndroid /p:Configuration=Debug
+      run: msbuild osu!stream/osu!stream_android.csproj /t:PackageForAndroid /p:Configuration=Release
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: osurestream
+        run: osu!stream/bin/Release/eu.apexie.osustream-Signed.apk
