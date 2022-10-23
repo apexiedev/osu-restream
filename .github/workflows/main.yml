@@ -9,9 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set default Xamarin SDK versions
-      run: |
-        $VM_ASSETS/select-xamarin-sdk-v2.sh
     
     - name: Set Android version
       uses: damienaicheh/update-android-version-manifest-action@v1.0.0
@@ -19,17 +16,6 @@ jobs:
         android-manifest-path: osu!stream/Properties/AndroidManifest.xml
         version-name: ${{ secrets.APP_VERSION }}
         version-code: ${{ github.run_number }}
-  
-    - name: Setup Android signing 
-      run: (echo ${{ secrets.KEYSTORE }} | base64 --decode) > /Users/runner/work/osu-restream/keystore.jks
-
-    - name: Setup .NET Core SDK 6.0.x
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '6.0.x'
-
-    - name: Install dependencies
-      run: nuget restore osu!stream_android.sln
 
     - uses: bradyjoslin/xamarinandroid-signedbuild-action@v1
       with:
