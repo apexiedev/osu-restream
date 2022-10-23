@@ -27,4 +27,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: osurestream
-        path: osu!stream/bin/Release/eu.apexie.osustream-Signed.apk
+        path: "/Users/runner/work/osu-restream/osu!stream/bin/Release/eu.apexie.osustream-Signed.apk"
