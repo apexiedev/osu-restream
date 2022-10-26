@@ -1,0 +1,32 @@
+name: Build and upload osu!restream
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set Android version
+      uses: damienaicheh/update-android-version-manifest-action@v1.0.0
+      with:
+        android-manifest-path: osu!stream/Properties/AndroidManifest.xml
+        version-name: ${{ secrets.APP_VERSION }}
+        version-code: ${{ github.run_number }}
+
+    - uses: bradyjoslin/xamarinandroid-signedbuild-action@v1
+      with:
+          csproj_path: osu!stream/osu!stream_android.csproj
+          signing_keystore: ${{ secrets.KEYSTORE }}
+          keystore_password: ${{ secrets.KEYSTORE_PASSWORD }}
+          signing_key_alias: ${{ secrets.KEYSTORE_ALIAS }}
+          signing_key_password: ${{ secrets.KEYSTORE_PASSWORD }}
+          configuration: "Release"
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: osurestream
+        path: "osu!stream/bin/Release/**Signed.apk"
