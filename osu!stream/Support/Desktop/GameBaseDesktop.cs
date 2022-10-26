@@ -16,7 +16,7 @@ namespace osum.Support.Desktop
         public override void Run()
         {
             Window = new GameWindowDesktop();
-            Window.Run();
+            Window.Run(60, 60);
             Director.CurrentMode.Dispose();
         }
 

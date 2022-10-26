@@ -334,6 +334,9 @@
     <AndroidAsset Include="Skins\Default\ranking_1920.png" />
     <AndroidAsset Include="Beatmaps\nekodex - Liquid Future %28mm201%29.osf2" />
     <AndroidAsset Include="Beatmaps\tieff &amp; Natteke - Endless Tower %28RandomJibberish%29.osf2" />
+    <AndroidAsset Include="Beatmaps\tieff &amp; Natteke - Sunrise %28jericho2442%29.osf2" />
+    <AndroidAsset Include="Beatmaps\SkyMarshall - Hitchhikers %28Gens%29.osf2" />
+    <AndroidAsset Include="Beatmaps\DragonForce - Through The Fire And Flames %28kingcobra52%29.osf2" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />

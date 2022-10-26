@@ -10,7 +10,7 @@ namespace osum
 {
     public static class Constants
     {
-        public const double SIXTY_FRAME_TIME = (double)1000 / 120;
+        public const double SIXTY_FRAME_TIME = (double) 1000 / 60;
 
 #if iOS
         public const int COLOR_BUFFER_BIT = (int)All.ColorBufferBit;

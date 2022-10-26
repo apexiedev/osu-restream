@@ -514,6 +514,15 @@
     <None Include="Beatmaps\tieff &amp; Natteke - Endless Tower %28RandomJibberish%29.osf2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Beatmaps\tieff &amp; Natteke - Sunrise %28jericho2442%29.osf2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Beatmaps\SkyMarshall - Hitchhikers %28Gens%29.osf2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Beatmaps\DragonForce - Through The Fire And Flames %28kingcobra52%29.osf2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Skins\Default\Futura-CondensedExtraBold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
