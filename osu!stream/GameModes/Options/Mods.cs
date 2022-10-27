@@ -89,6 +89,11 @@ namespace osum.GameModes.Options
             smd.Add(oldSoundtrack);
 
             vPos += 60;
+            
+            unreleasedTheme = new pButton("Unreleased Themes", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayUnreleasedThemeDialog(); });
+            smd.Add(unreleasedTheme);
+            
+            vPos += 60;
 
             welcomeToOsu = new pButton("osu! 2015 theme", new Vector2(button_x_offset, vPos), new Vector2(280, 50), Color4.SkyBlue, delegate { DisplayWelcomeToOsuDialog(); });
             smd.Add(welcomeToOsu);
@@ -111,6 +116,7 @@ namespace osum.GameModes.Options
         private pSprite s_Header;
         private pButton hiddenMod;
         private pButton oldSoundtrack;
+        private pButton unreleasedTheme;
         private pButton welcomeToOsu;
         private pButton photosensitiveMode;
 
@@ -133,6 +139,18 @@ namespace osum.GameModes.Options
                 delegate (bool yes)
                 {
                     GameBase.Config.SetValue(@"OldSoundtrack", yes);
+                    if (Director.CurrentMode is Mods o) o.UpdateButtons();
+                });
+            GameBase.Notify(notification);
+        }
+        
+        internal static void DisplayUnreleasedThemeDialog()
+        {
+            Notification notification = new Notification("Enable unreleased themes?", "Want to know how the soundtrack would have sounded like if it was released in early 2011? Enable the unreleased themes to hear the old versions of the songs.",
+                NotificationStyle.YesNo,
+                delegate (bool yes)
+                {
+                    GameBase.Config.SetValue(@"UnreleasedTheme", yes);
                     if (Director.CurrentMode is Mods o) o.UpdateButtons();
                 });
             GameBase.Notify(notification);
@@ -166,9 +184,9 @@ namespace osum.GameModes.Options
         {
             hiddenMod.SetStatus(GameBase.Config.GetValue(@"HiddenMod", false));
             oldSoundtrack.SetStatus(GameBase.Config.GetValue(@"OldSoundtrack", false));
+            unreleasedTheme.SetStatus(GameBase.Config.GetValue(@"UnreleasedTheme", false));
             welcomeToOsu.SetStatus(GameBase.Config.GetValue(@"WelcomeToOsuTheme", false));
             photosensitiveMode.SetStatus(GameBase.Config.GetValue(@"PhotosensitiveMode", false));
-            // doubleTimeMod.SetStatus(GameBase.Config.GetValue(@"DoubleTimeMod", false));
         }        
 
         public override void Dispose()

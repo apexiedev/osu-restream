@@ -273,10 +273,18 @@ namespace osum.GameModes.MainMenu
             bool didLoad;
             if (GameBase.Config.GetValue(@"WelcomeToOsuTheme", false)) {
                 didLoad = AudioEngine.Music.Load("Skins/Default/welcometoosu.m4a", true);
-            } else {
-                if (GameBase.Config.GetValue(@"OldSoundtrack", false)) {
+            }
+            else
+            {
+                if (GameBase.Config.GetValue(@"UnreleasedTheme", false))
+                {
+                    didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-unreleased.m4a", true);
+                } else if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+                {
                     didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.m4a", true);
-                } else {
+                }
+                else
+                {
                     didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu.m4a", true);
                 }
             }
@@ -287,7 +295,10 @@ namespace osum.GameModes.MainMenu
             }
             else
             {
-                if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+                if (GameBase.Config.GetValue(@"UnreleasedTheme", false))
+                {
+                    didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-unreleased.mp3", true);
+                } else if (GameBase.Config.GetValue(@"OldSoundtrack", false))
                 {
                     didLoad = AudioEngine.Music.Load("Skins/Default/mainmenu-old.mp3", true);
                 }

@@ -295,11 +295,13 @@
     <AndroidAsset Include="Skins\Default\intro_960.png" />
     <AndroidAsset Include="Skins\Default\credits.mp3" />
     <AndroidAsset Include="Skins\Default\mainmenu.mp3" />
+    <AndroidAsset Include="Skins\Default\mainmenu-unreleased.mp3" />
     <AndroidAsset Include="Skins\Default\mainmenu-old.mp3" />
     <AndroidAsset Include="Skins\Default\welcometoosu.mp3" />
     <AndroidAsset Include="Skins\Default\results.mp3" />
     <AndroidAsset Include="Skins\Default\results-old.mp3" />
     <AndroidAsset Include="Skins\Default\songselect.mp3" />
+    <AndroidAsset Include="Skins\Default\songselect-unreleased.mp3" />
     <AndroidAsset Include="Skins\Default\songselect-old.mp3" />
     <AndroidAsset Include="Localisation\en.txt" />
     <AndroidAsset Include="Localisation\ja.txt" />

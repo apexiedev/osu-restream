@@ -465,7 +465,10 @@ namespace osum.GameModes.Results
             //Start playing song select BGM.
 #if iOS
             bool didLoad;
-            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            if (GameBase.Config.GetValue(@"UnreleasedTheme", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/results-unreleased.m4a", true);
+            } else if (GameBase.Config.GetValue(@"OldSoundtrack", false))
             {
                 didLoad = AudioEngine.Music.Load("Skins/Default/results-old.m4a", true);
             } else {
@@ -473,7 +476,10 @@ namespace osum.GameModes.Results
             }
 #else
             bool didLoad;
-            if (GameBase.Config.GetValue(@"OldSoundtrack", false))
+            if (GameBase.Config.GetValue(@"UnreleasedTheme", false))
+            {
+                didLoad = AudioEngine.Music.Load("Skins/Default/results-unreleased.mp3", true);
+            } else if (GameBase.Config.GetValue(@"OldSoundtrack", false))
             {
                 didLoad = AudioEngine.Music.Load("Skins/Default/results-old.mp3", true);
             } else {

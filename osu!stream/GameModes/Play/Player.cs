@@ -130,8 +130,7 @@ namespace osum.GameModes.Play
 
             loadBeatmap();
             
-            // PhotosensitiveMode = GameBase.Config.GetValue(@"PhotosensitiveMode", false);
-            PhotosensitiveMode = false;
+            PhotosensitiveMode = GameBase.Config.GetValue(@"PhotosensitiveMode", false);
 
             topMostSpriteManager = new SpriteManager();
 
